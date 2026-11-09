@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
     <a href="#top" class="nav__logo">Abdul&nbsp;Moeez<span>.</span></a>
@@ -27,7 +29,7 @@
       <a href="#work">Work</a>
       <a href="#pipeline">Case study</a>
       <a href="#experience">Experience</a>
-      <a href="https://www.voxilai.tech/book-meeting.html" class="nav__cta" target="_blank" rel="noopener">Book a call</a>
+      <a href="https://www.voxilai.tech/book-meeting.html" class="nav__cta" data-magnetic target="_blank" rel="noopener">Book a call</a>
     </nav>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
@@ -37,10 +39,12 @@
   <main id="top">
     <!-- ============ HERO ============ -->
     <section class="hero">
+      <canvas class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="hero__blobs" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="hero__grid">
         <div class="hero__text">
           <p class="mono-label reveal"><span class="dot"></span> Available for new projects</p>
-          <h1 class="hero__title reveal">
+          <h1 class="hero__title" data-split>
             Abdul Moeez<br />
             <em>builds systems</em><br />
             that just work.
@@ -51,8 +55,8 @@
             can't do something natively, I build the missing piece.
           </p>
           <div class="hero__actions reveal">
-            <a href="https://www.voxilai.tech/book-meeting.html" class="btn btn--blue" target="_blank" rel="noopener">Book a free call <span aria-hidden="true">→</span></a>
-            <a href="#work" class="btn btn--ghost">See my work</a>
+            <a href="https://www.voxilai.tech/book-meeting.html" data-magnetic class="btn btn--blue" target="_blank" rel="noopener">Book a free call <span aria-hidden="true">→</span></a>
+            <a href="#work" data-magnetic class="btn btn--ghost">See my work</a>
           </div>
           <ul class="hero__meta reveal">
             <li><strong data-count="6">0</strong><span>+ yrs full-stack</span></li>
@@ -61,8 +65,10 @@
           </ul>
         </div>
 
-        <figure class="hero__portrait reveal">
+        <figure class="hero__portrait reveal" data-tilt="6">
           <div class="portrait__frame">
+            <span class="portrait__glare" aria-hidden="true"></span>
+            <span class="portrait__scan" aria-hidden="true"></span>
             <img src="images/abdul-moeez.jpg" alt="Portrait of Abdul Moeez" width="1402" height="1122" fetchpriority="high" />
           </div>
           <figcaption class="portrait__tag">
@@ -125,7 +131,7 @@
     <section class="section services" id="services">
       <div class="section__head reveal">
         <p class="mono-label">02 / Services</p>
-        <h2 class="section__title">What I can <em>do for you</em></h2>
+        <h2 class="section__title wipe">What I can <em>do for you</em></h2>
       </div>
       <div class="services__grid">
         <article class="service reveal">
@@ -171,18 +177,18 @@
     <section class="section work" id="work">
       <div class="section__head reveal">
         <p class="mono-label">03 / Selected work</p>
-        <h2 class="section__title">Products I've <em>built</em></h2>
+        <h2 class="section__title wipe">Products I've <em>built</em></h2>
       </div>
 
       <div class="work__list">
         <article class="project reveal">
-          <div class="project__visual project__visual--a" aria-hidden="true">
+          <div data-tilt="4" class="project__visual project__visual--a" aria-hidden="true">
             <div class="mock">
               <div class="mock__bar"><i></i><i></i><i></i><small>subdesk.cc</small></div>
               <div class="mock__dash">
                 <div class="kpi"><small>Clients</small><strong>48</strong></div>
-                <div class="kpi"><small>Awaiting approval</small><strong>7</strong></div>
-                <div class="mock__rows"><span>Brief drafted · Acme HVAC</span><span>Flow ran · Weekly report</span><span class="ok">Approved · Newsletter</span></div>
+                <div class="kpi"><small>Awaiting approval</small><strong id="sdWait">7</strong></div>
+                <div class="mock__rows" id="sdRows"><span><b class="st st--draft">Drafting</b>Brief · Acme HVAC</span><span><b class="st st--wait">Review</b>Weekly report</span><span><b class="st st--ok">Approved</b>Newsletter</span></div>
               </div>
             </div>
           </div>
@@ -200,15 +206,11 @@
         </article>
 
         <article class="project project--flip reveal">
-          <div class="project__visual project__visual--c" aria-hidden="true">
+          <div data-tilt="4" class="project__visual project__visual--c" aria-hidden="true">
             <div class="mock">
-              <div class="mock__bar"><i></i><i></i><i></i><small>callyniq · live call</small></div>
-              <div class="mock__chat">
-                <p class="in">Hi, my furnace stopped working. Can someone come out?</p>
-                <p class="out">Sorry to hear that! Is it a gas or electric furnace?</p>
-                <p class="in">Gas. Tomorrow morning if possible.</p>
-                <p class="out">Booked for 9am tomorrow ✓ You'll get a text confirmation.</p>
-              </div>
+              <div class="mock__bar"><i></i><i></i><i></i><small>callyniq · live call</small><span class="live"><i></i><span id="callTimer">00:00</span></span></div>
+              <div class="wave" aria-hidden="true"><i style="--d:0.0s"></i><i style="--d:0.1s"></i><i style="--d:0.2s"></i><i style="--d:0.3s"></i><i style="--d:0.4s"></i><i style="--d:0.5s"></i><i style="--d:0.6s"></i><i style="--d:0.7s"></i><i style="--d:0.8s"></i><i style="--d:0.0s"></i><i style="--d:0.1s"></i><i style="--d:0.2s"></i><i style="--d:0.3s"></i><i style="--d:0.4s"></i><i style="--d:0.5s"></i><i style="--d:0.6s"></i><i style="--d:0.7s"></i><i style="--d:0.8s"></i><i style="--d:0.0s"></i><i style="--d:0.1s"></i><i style="--d:0.2s"></i><i style="--d:0.3s"></i><i style="--d:0.4s"></i><i style="--d:0.5s"></i><i style="--d:0.6s"></i><i style="--d:0.7s"></i><i style="--d:0.8s"></i><i style="--d:0.0s"></i></div>
+              <div class="mock__chat" id="chat"></div>
             </div>
           </div>
           <div class="project__info">
@@ -225,13 +227,19 @@
         </article>
 
         <article class="project reveal">
-          <div class="project__visual project__visual--b" aria-hidden="true">
+          <div data-tilt="4" class="project__visual project__visual--b" aria-hidden="true">
             <div class="mock">
               <div class="mock__bar"><i></i><i></i><i></i><small>codeswave.com</small></div>
-              <div class="mock__wire">
-                <span class="w w--nav"></span><span class="w w--hero"></span>
-                <span class="w"></span><span class="w"></span><span class="w"></span>
-              </div>
+              <svg class="mock__wire" viewBox="0 0 300 170" aria-hidden="true">
+                <rect class="d" x="12" y="10" width="276" height="14" rx="3"/>
+                <rect class="d" x="12" y="34" width="276" height="62" rx="4"/>
+                <line class="d" x1="28" y1="52" x2="150" y2="52"/>
+                <line class="d" x1="28" y1="64" x2="120" y2="64"/>
+                <rect class="d" x="28" y="76" width="44" height="10" rx="5"/>
+                <rect class="d" x="12" y="106" width="86" height="54" rx="4"/>
+                <rect class="d" x="107" y="106" width="86" height="54" rx="4"/>
+                <rect class="d" x="202" y="106" width="86" height="54" rx="4"/>
+              </svg>
             </div>
           </div>
           <div class="project__info">
@@ -258,8 +266,8 @@
           <p>As the GoHighLevel specialist at a US white-label agency, I took ownership of a sprawling automation estate (hundreds of Zaps feeding client sub-accounts), tracked a webhook race condition down to its root cause, and ran the migration cutover without a minute of downtime.</p>
         </div>
         <ul class="case__stats">
-          <li><strong>200+</strong><span>GHL sub-accounts managed</span></li>
-          <li><strong>750+</strong><span>Zaps managed</span></li>
+          <li><strong data-count="200" data-suffix="+">0</strong><span>GHL sub-accounts managed</span></li>
+          <li><strong data-count="750" data-suffix="+">0</strong><span>Zaps managed</span></li>
           <li><strong>0</strong><span>Downtime at cutover</span></li>
           <li><strong>1</strong><span>Race condition, fixed at the root</span></li>
         </ul>
@@ -271,16 +279,20 @@
     <section class="section pipeline" id="pipeline">
       <div class="section__head reveal">
         <p class="mono-label">Case study / GoHighLevel × Make × ServiceTitan</p>
-        <h2 class="section__title">From form fill to <em>booked job</em></h2>
+        <h2 class="section__title wipe">From form fill to <em>booked job</em></h2>
         <p class="section__lede">An end-to-end lead pipeline for HVAC contractors: qualify in GoHighLevel, book on the calendar, build the job in ServiceTitan, and keep both systems in sync.</p>
       </div>
+      <div class="rail reveal" aria-hidden="true">
+        <div class="rail__line"><span class="rail__fill"></span><span class="rail__packet"></span></div>
+        <ol class="rail__nodes"><li>Form</li><li>Calendar</li><li>GHL</li><li>Make</li><li>ServiceTitan</li><li>Sync</li></ol>
+      </div>
       <ol class="steps">
-        <li class="reveal"><span class="mono">01</span><h3>Branching intake</h3><p>An eight-step funnel sorts every lead before a human touches it (install vs. service, AC vs. furnace, estimate or not), and each path triggers its own automation.</p></li>
-        <li class="reveal"><span class="mono">02</span><h3>Straight onto the calendar</h3><p>The final step is a live calendar with three-hour arrival windows (evenings included). Picking a slot creates the appointment. No phone tag.</p></li>
-        <li class="reveal"><span class="mono">03</span><h3>Tag, enroll, hand off</h3><p>The booking fires a GHL workflow that tags the contact and ends in a webhook passing the payload to Make.com.</p></li>
-        <li class="reveal"><span class="mono">04</span><h3>38 modules build the job</h3><p>The Make scenario matches the customer, assembles the payload and creates the job in ServiceTitan, routing install, service and maintenance separately.</p></li>
-        <li class="reveal"><span class="mono">05</span><h3>Status flows home</h3><p>A scheduled scenario polls ServiceTitan for job and invoice state and updates the GHL opportunity, so the pipeline always reflects reality.</p></li>
-        <li class="reveal"><span class="mono">06</span><h3>Self-healing auth</h3><p>ServiceTitan tokens expire by design; a small scenario refreshes and stores them on a schedule so nobody ever has to think about it.</p></li>
+        <li class="reveal" data-tilt="5"><span class="mono">01</span><h3>Branching intake</h3><p>An eight-step funnel sorts every lead before a human touches it (install vs. service, AC vs. furnace, estimate or not), and each path triggers its own automation.</p></li>
+        <li class="reveal" data-tilt="5"><span class="mono">02</span><h3>Straight onto the calendar</h3><p>The final step is a live calendar with three-hour arrival windows (evenings included). Picking a slot creates the appointment. No phone tag.</p></li>
+        <li class="reveal" data-tilt="5"><span class="mono">03</span><h3>Tag, enroll, hand off</h3><p>The booking fires a GHL workflow that tags the contact and ends in a webhook passing the payload to Make.com.</p></li>
+        <li class="reveal" data-tilt="5"><span class="mono">04</span><h3>38 modules build the job</h3><p>The Make scenario matches the customer, assembles the payload and creates the job in ServiceTitan, routing install, service and maintenance separately.</p></li>
+        <li class="reveal" data-tilt="5"><span class="mono">05</span><h3>Status flows home</h3><p>A scheduled scenario polls ServiceTitan for job and invoice state and updates the GHL opportunity, so the pipeline always reflects reality.</p></li>
+        <li class="reveal" data-tilt="5"><span class="mono">06</span><h3>Self-healing auth</h3><p>ServiceTitan tokens expire by design; a small scenario refreshes and stores them on a schedule so nobody ever has to think about it.</p></li>
       </ol>
       <div class="flows reveal">
         <div><p class="mono">New leads</p><p>TCPA consent decides the cadence: SMS + email for opted-in leads, manual tasks where consent is missing.</p></div>
@@ -294,17 +306,17 @@
     <section class="section tools" id="integrations">
       <div class="section__head reveal">
         <p class="mono-label">Integrations, scrapers &amp; tooling</p>
-        <h2 class="section__title">When the tool can't, <em>I build it</em></h2>
+        <h2 class="section__title wipe">When the tool can't, <em>I build it</em></h2>
       </div>
       <div class="tools__grid">
-        <article class="tool reveal"><p class="mono">Sync daemon</p><h3>Mindbody → GoHighLevel sync</h3><p>Bookings, clients and classes flow from Mindbody into GHL on a schedule: no exports, no copy-paste, no missed records.</p><p class="tool__tags mono">Node.js · APIs · Scheduled runs</p></article>
-        <article class="tool reveal"><p class="mono">Chrome extension</p><h3>Group approvals → CRM, one click</h3><p>Adds a "Send to GHL" button next to Approve on Facebook Group member requests, capturing each member's answers into the CRM at approval time.</p><p class="tool__tags mono">DOM injection · GHL API</p></article>
-        <article class="tool reveal"><p class="mono">n8n</p><h3>Tilda forms → GHL, routed in n8n</h3><p>Tilda form webhooks land in n8n, get cleaned and routed into the right GoHighLevel pipelines.</p><p class="tool__tags mono">Tilda webhooks · GHL pipelines</p></article>
-        <article class="tool reveal"><p class="mono">Zapier · ARIVE</p><h3>ARIVE loans → GHL, deduped on arrival</h3><p>New loan applications from ARIVE arrive in GHL as clean contacts, deduplicated and tagged with their source.</p><p class="tool__tags mono">Contact dedupe · Source attribution</p></article>
-        <article class="tool reveal"><p class="mono">Zapier · ARIVE</p><h3>Loan stages, mirrored into the CRM</h3><p>Every loan stage, from application received through conditional approval, is routed to the matching CRM stage and workflow.</p><p class="tool__tags mono">Stage routing · Webhooks · Field mapping</p></article>
-        <article class="tool reveal"><p class="mono">Puppeteer</p><h3>FMLS listing scraper</h3><p>Georgia's MLS portal, scraped on a schedule: listings, prices and status changes turned into a clean feed as soon as they publish.</p><p class="tool__tags mono">MLS data · Scheduled runs</p></article>
-        <article class="tool reveal"><p class="mono">Puppeteer</p><h3>SeniorLife portal scraper</h3><p>Logs into an insurance agent portal, walks every policy record and exports the whole book to clean CSV.</p><p class="tool__tags mono">Auth flows · CSV export</p></article>
-        <article class="tool reveal"><p class="mono">Puppeteer</p><h3>Puppeteer scraper suite</h3><p>Large-scale scrapers powering extraction, monitoring and automation pipelines: resilient, scheduled and observable.</p><p class="tool__tags mono">Rotating fleets · Retries · CSV/DB delivery</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">Sync daemon</p><h3>Mindbody → GoHighLevel sync</h3><p>Bookings, clients and classes flow from Mindbody into GHL on a schedule: no exports, no copy-paste, no missed records.</p><p class="tool__tags mono">Node.js · APIs · Scheduled runs</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">Chrome extension</p><h3>Group approvals → CRM, one click</h3><p>Adds a "Send to GHL" button next to Approve on Facebook Group member requests, capturing each member's answers into the CRM at approval time.</p><p class="tool__tags mono">DOM injection · GHL API</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">n8n</p><h3>Tilda forms → GHL, routed in n8n</h3><p>Tilda form webhooks land in n8n, get cleaned and routed into the right GoHighLevel pipelines.</p><p class="tool__tags mono">Tilda webhooks · GHL pipelines</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">Zapier · ARIVE</p><h3>ARIVE loans → GHL, deduped on arrival</h3><p>New loan applications from ARIVE arrive in GHL as clean contacts, deduplicated and tagged with their source.</p><p class="tool__tags mono">Contact dedupe · Source attribution</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">Zapier · ARIVE</p><h3>Loan stages, mirrored into the CRM</h3><p>Every loan stage, from application received through conditional approval, is routed to the matching CRM stage and workflow.</p><p class="tool__tags mono">Stage routing · Webhooks · Field mapping</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">Puppeteer</p><h3>FMLS listing scraper</h3><p>Georgia's MLS portal, scraped on a schedule: listings, prices and status changes turned into a clean feed as soon as they publish.</p><p class="tool__tags mono">MLS data · Scheduled runs</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">Puppeteer</p><h3>SeniorLife portal scraper</h3><p>Logs into an insurance agent portal, walks every policy record and exports the whole book to clean CSV.</p><p class="tool__tags mono">Auth flows · CSV export</p></article>
+        <article class="tool reveal" data-tilt="5"><p class="mono">Puppeteer</p><h3>Puppeteer scraper suite</h3><p>Large-scale scrapers powering extraction, monitoring and automation pipelines: resilient, scheduled and observable.</p><p class="tool__tags mono">Rotating fleets · Retries · CSV/DB delivery</p></article>
       </div>
     </section>
 
@@ -312,7 +324,7 @@
     <section class="section sites" id="sites">
       <div class="section__head reveal">
         <p class="mono-label">Site rebuilds</p>
-        <h2 class="section__title"><em>46</em> HVAC contractor sites, rebuilt</h2>
+        <h2 class="section__title wipe"><em>46</em> HVAC contractor sites, rebuilt</h2>
         <p class="section__lede">Websites for heating, cooling and plumbing companies across Ontario and the United States.</p>
       </div>
       <ul class="sites__list reveal">
@@ -369,7 +381,7 @@
     <section class="section experience" id="experience">
       <div class="section__head reveal">
         <p class="mono-label">04 / Experience</p>
-        <h2 class="section__title">The <em>journey</em> so far</h2>
+        <h2 class="section__title wipe">The <em>journey</em> so far</h2>
       </div>
       <ol class="timeline">
         <li class="reveal">
@@ -416,7 +428,7 @@
         <p class="mono-label mono-label--light">05 / Contact</p>
         <h2>Have a project in mind?<br /><em>Let's build it.</em></h2>
         <div class="contact__actions">
-          <a href="https://www.voxilai.tech/book-meeting.html" class="btn btn--light" target="_blank" rel="noopener">Book a free 30-min call <span aria-hidden="true">→</span></a>
+          <a href="https://www.voxilai.tech/book-meeting.html" data-magnetic class="btn btn--light" target="_blank" rel="noopener">Book a free 30-min call <span aria-hidden="true">→</span></a>
         </div>
         <a class="contact__email" href="mailto:abdulmoeez2708@gmail.com">abdulmoeez2708@gmail.com <span aria-hidden="true">↗</span></a>
         <div class="contact__links">
