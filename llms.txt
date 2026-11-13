@@ -8,7 +8,7 @@ Skills: AI Automation, n8n, Make, Zapier, AI Agents, GoHighLevel, missed-call te
 
 - [Portfolio](https://abdulmoeezhassan.github.io/): Personal portfolio site for Abdul Moeez
 - [Voxilai](https://www.voxilai.tech/): Agency website — AI automation for small businesses
-- [Upwork](https://www.upwork.com/freelancers/~0104212f2b3804d7d5): Freelance profile
+- [Upwork](https://www.upwork.com/freelancers/~0104212f2b3804d7d5): Freelance upwork profile
 - [Facebook](https://www.facebook.com/profile.php?id=61564385205233): Facebook profile
 
 ## Optional
