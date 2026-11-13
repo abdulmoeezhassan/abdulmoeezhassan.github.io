@@ -171,6 +171,15 @@ em { font-style: normal; font-weight: inherit; color: var(--terracotta); backgro
 .about__facts { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid var(--line); }
 .about__facts li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .about__facts .mono { width: 110px; flex-shrink: 0; color: var(--taupe); padding-top: 3px; }
+.about__online { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+.about__online > .mono { color: var(--taupe); margin: 0 0 14px; }
+.about__online-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.about__online-links a {
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 999px;
+  color: var(--ink); transition: background .3s, color .3s, border-color .3s;
+}
+.about__online-links a:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
 /* Services */
 .services__grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong); }
